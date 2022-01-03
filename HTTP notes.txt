@@ -74,6 +74,123 @@ You can ensure that cookies are sent securely and aren't accessed by unintended 
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+***********Resources and URIs***********
+1) HTTP allows a browser, or another user agent, 
+to communicate with different resources on the Internet: 
+to do this the browser needs both the identity and the location of the resources. 
+These two bits of information are described by a URI.
+
+2) A URI (Uniform Resource Identifier) is a string that refers to a resource.
+
+3) The target of an HTTP request is called a "resource", whose nature isn't defined further; 
+it can be a document, a photo, or anything else. Each resource is iden
+tified by a Uniform Resource Identifier (URI) used throughout HTTP for identifying resources.
+
+4) Uniform Resource Locator (URL) is a text string that specifies where a resource 
+(such as a web page, image, or video) can be found on the Internet.
+
+5) Syntax of Uniform Resource Identifiers (URIs)
+
+http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument
+
+Scheme or protocol
+http:// is the protocol. It indicates which protocol the browser must use. 
+Usually it is the HTTP protocol or its secured version, HTTPS. 
+The Web requires one of these two, but browsers also know how to handle other 
+protocols such as mailto: (to open a mail client) or ftp: to handle a file transfer, 
+so don't be surprised if you see such protocols. 
+
+Authority or Domain name
+www.example.com is the domain name or authority that governs the namespace. 
+It indicates which Web server is being requested. Alternatively, 
+it is possible to directly use an IP address, but 
+because it is less convenient, it is not often used on the Web.
+
+Port
+:80 is the port in this instance. It indicates the technical "gate" 
+used to access the resources on the web server. 
+It is usually omitted if the web server uses 
+the standard ports of the HTTP protocol (80 for HTTP and 443 for HTTPS) 
+to grant access to its resources. Otherwise, it is mandatory.
+
+Paath
+/path/to/myfile.html is the path to the resource on the Web server. 
+In the early days of the Web, a path like this represented 
+a physical file location on the Web server. Nowadays, 
+it is mostly an abstraction handled by Web servers without any physical reality.
+
+
+Query
+?key1=value1&key2=value2 are extra parameters provided to the Web server. 
+Those parameters are a list of key/value pairs separated with the & symbol. 
+The Web server can use those parameters to do extra stuff before returning 
+the resource to the user. Each Web server has its own rules regarding parameters, 
+and the only reliable way to know how a specific Web server is handling parameters 
+is by asking the Web server owner.
+
+Fragment or Anchor
+#SomewhereInTheDocument is an anchor to another part of the resource itself. 
+An anchor represents a sort of "bookmark" inside the resource, 
+giving the browser the directions to show the content located at that "bookmarked" spot. 
+On an HTML document, for example, the browser will scroll to the point 
+where the anchor is defined; on a video or audio document, 
+the browser will try to go to the time the anchor represents. 
+It is worth noting that the part after the #, also known as the fragment identifier, 
+is never sent to the server with the request.
+
+6) Data URLs, URLs prefixed with the data: scheme, allow content 
+creators to embed small files inline in documents. They were formerly 
+known as "data URIs" until that name was retired by the WHATWG.
+
+7) Choosing between www and non-www URLs
+Yes, you need to choose one and stick with it. 
+The choice of which one to have as your canonical location is yours, 
+but if you choose one, stick with it. 
+It will make your website appear more consistent to your users and to search engines. 
+This includes always linking to the chosen domain 
+(which shouldn't be hard if you're using relative URLs in your website) 
+and always sharing links (by email/social networks, etc.) to the same domain.
+
+No, you can have two. What is important is that you are coherent 
+and consistent with which one is the official domain. 
+This official domain is called the canonical name. 
+All your absolute links should use it. But even so, you can still have 
+the other domain working: HTTP allows two techniques so that it is clear for your users, 
+or search engines, which domain is the canonical one, while 
+still allowing the non-canonical domain to work and provide the expected pages.
+So, choose one of your domains as your canonical one! 
+There are two techniques below to allow the non-canonical domain to work still.
+
+
+***********MIME tpyess***********
+1) A media type (also known as a Multipurpose Internet Mail Extensions or MIME type) 
+indicates the nature and format of a document, file, or assortment of bytes.
+
+2) A simplest MIME type consists of a type and a subtype. 
+A MIME type comprises these strings concatenated with a slash (/). 
+No whitespace is allowed in a MIME type:
+
+3) The type represents the general category into which the data type falls, such as video or text.
+
+The subtype identifies the exact kind of data of the specified type the MIME type represents. 
+For example, for the MIME type text, the subtype might be plain (plain text), html (HTML source code), 
+or calendar (for iCalendar/.ics) files.
+
+4) Each type has its own set of possible subtypes. 
+A MIME type always has both a type and a subtype, never just one or the other.
+
+5) Types
+There are two classes of type: discrete and multipart. 
+Discrete types are types which represent a single file or medium, 
+such as a single text or music file, or a single video. 
+A multipart type is one which represents a document that's comprised of multiple component parts, 
+each of which may have its own individual MIME type; 
+or, a multipart type may encapsulate multiple files being sent together in one transaction. 
+For example, multipart MIME types are used when attaching multiple files to an email.
+
 
 
 
