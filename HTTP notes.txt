@@ -191,6 +191,7 @@ each of which may have its own individual MIME type;
 or, a multipart type may encapsulate multiple files being sent together in one transaction. 
 For example, multipart MIME types are used when attaching multiple files to an email.
 
+<<<<<<< HEAD
 
 ***********HTTP headers***********
 1) HTTP headers let the client and the server pass additional information with an HTTP request or response.
@@ -236,6 +237,8 @@ Server error responses (500–599)
 
 
 
+=======
+>>>>>>> 78d19514059a7365862e07a1169bfb0ffe95c55f
 
 
 
