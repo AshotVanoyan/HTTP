@@ -228,3 +228,104 @@ Successful responses (200–299)
 Redirection messages (300–399)
 Client error responses (400–499)
 Server error responses (500–599)
+
+***********HTTP methods***********
+1) HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
+Each of them implements a different semantic, 
+but some common features are shared by a group of them: e.g. a request method can be safe, idempotent, or cacheable.
+
+2) An HTTP method is safe if it doesn't alter the state of the server. 
+In other words, a method is safe if it leads to a read-only operation. 
+Several common HTTP methods are safe: GET, HEAD, or OPTIONS. All safe methods are also idempotent, 
+but not all idempotent methods are safe. 
+For example, PUT and DELETE are both idempotent but unsafe.
+GET, HEAD, OPTIONS
+
+3) An HTTP method is idempotent if an identical request can be made once or 
+several times in a row with the same effect while leaving the server in the same state. 
+In other words, an idempotent method should not have any side-effects (except for keeping statistics). 
+Implemented correctly, the GET, HEAD, PUT, and DELETE methods are idempotent, but not the POST method. 
+All safe methods are also idempotent.
+GET, HEAD, OPTIONS, PUT, DELETE
+POST is not idempotent
+
+4) A cacheable response is an HTTP response that can be cached, 
+that is stored to be retrieved and used later, saving a new request to the server
+The method used in the request is itself cacheable, that is either a GET or a HEAD method. 
+A response to a POST or PATCH request can also be cached if freshness is indicated
+The following status code are cacheable: 200, 203, 204, 206, 300, 301, 404, 405, 410, 414, and 501.
+PUT or DELETE are not cacheable and their result cannot be cached.
+
+5) GET
+The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+
+6) HEAD
+The HEAD method asks for a response identical to a GET request, but without the response body.
+The HTTP HEAD method requests the headers that would be returned if the HEAD request's URL was instead 
+requested with the HTTP GET method. For example, if a URL might produce a large download, 
+a HEAD request could read its Content-Length header to check the filesize without actually downloading the file.
+
+A response to a HEAD method should not have a body. If it has one anyway, 
+that body must be ignored: any representation headers that might describe the erroneous 
+body are instead assumed to describe the response which a similar GET request would have received.
+
+7) POST
+The HTTP POST method sends data to the server. 
+The type of the body of the request is indicated by the Content-Type header.
+
+The difference between PUT and POST is that PUT is idempotent: 
+calling it once or several times successively has the same effect (that is no side effect), 
+where successive identical POST may have additional effects, like passing an order several times
+
+8) PUT
+The HTTP PUT request method creates a new resource or replaces a representation of the target resource 
+with the request payload.
+
+If the target resource does not have a current representation and the PUT request successfully creates one, 
+then the origin server must inform the user agent by sending a 201 (Created) response.
+
+If the target resource does have a current representation and that representation is successfully 
+modified in accordance with the state of the enclosed representation, 
+then the origin server must send either a 200 (OK) or a 204 (No Content) response 
+to indicate successful completion of the request.
+
+9) DELETE
+The HTTP DELETE request method deletes the specified resource.
+
+If a DELETE method is successfully applied, there are several response status codes possible:
+
+A 202 (Accepted) status code if the action will likely succeed but has not yet been enacted.
+A 204 (No Content) status code if the action has been enacted and no further information is to be supplied.
+A 200 (OK) status code if the action has been enacted and 
+the response message includes a representation describing the status
+
+10) CONNECT
+The HTTP CONNECT method starts two-way communications with the requested resource. It can be used to open a tunnel
+
+For example, the CONNECT method can be used to access websites that use SSL (HTTPS). 
+The client asks an HTTP Proxy server to tunnel the TCP connection to the desired destination. 
+The server then proceeds to make the connection on behalf of the client. 
+Once the connection has been established by the server, 
+the Proxy server continues to proxy the TCP stream to and from the client.
+
+11) OPTIONS
+The HTTP OPTIONS method requests permitted communication options for a given URL or server. 
+
+12) TRACE
+The HTTP TRACE method performs a message loop-back test along the path to the target resource, 
+providing a useful debugging mechanism.
+
+The final recipient of the request should reflect the message received, excluding some fields described below, 
+back to the client as the message body of a 200 (OK) response with a Content-Type of message/http. 
+The final recipient is either the origin server or the first server to receive a Max-Forwards value of 0 in the request.
+
+13) PATCH
+The HTTP PATCH request method applies partial modifications to a resource.
+
+PATCH is somewhat analogous to the "update" concept found in CRUD 
+(in general, HTTP is different than CRUD, and the two should not be confused).
+
+A PATCH request is considered a set of instructions on how to modify a resource. 
+Contrast this with PUT; which is a complete representation of a resource.
+
+PATCH (like POST) may have side-effects on other resources.
